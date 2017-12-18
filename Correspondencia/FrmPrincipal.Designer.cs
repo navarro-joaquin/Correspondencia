@@ -76,6 +76,8 @@
             this.txtNroRecepcion = new System.Windows.Forms.TextBox();
             this.lblNroRecepcion = new System.Windows.Forms.Label();
             this.btnExcel = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCorrespondencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.corr_jefaturaBindingSource)).BeginInit();
@@ -506,9 +508,23 @@
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(103, 41);
             this.btnExcel.TabIndex = 4;
-            this.btnExcel.Text = "&Importar desde Excel";
+            this.btnExcel.Text = "Importar desde &Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(650, 528);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(103, 40);
+            this.btnImprimir.TabIndex = 5;
+            this.btnImprimir.Text = "&Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // FrmPrincipal
             // 
@@ -516,6 +532,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 581);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnVerModificar);
@@ -585,6 +602,8 @@
         private System.Windows.Forms.TextBox txtNroRecepcion;
         private System.Windows.Forms.Label lblNroRecepcion;
         private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.Button btnImprimir;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
 

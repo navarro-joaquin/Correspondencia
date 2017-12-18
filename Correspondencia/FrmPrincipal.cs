@@ -142,5 +142,68 @@ namespace Correspondencia
             MessageBox.Show("Se encontraron " + nuevos + " registros nuevos y " + duplicados + " registros duplicados", "Importando desde Excel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.corr_jefaturaTableAdapter.Fill(this.correspondenciaDataSet.corr_jefatura);
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            printDocument1.Print();
+        }
+
+        private int i = 0;
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            // La guente que vamos a usar para imprimir
+            Font printFont = new Font("Arial", 10);
+            float topMargin = e.MarginBounds.Top;
+            float yPos = 0;
+            float linesPerPage = 0;
+            int count = 0;
+            string texto = "";
+            DataGridViewRow row;
+
+            // Calculamos el número de líneas que caben en cada página
+            linesPerPage = e.MarginBounds.Height / printFont.GetHeight(e.Graphics);
+
+            // Recorremos las filas del DataGridView hasta que lleguemos
+            // a las líneas que nos caben en cada página o al final del grid
+            while (count < linesPerPage && i < this.dgvCorrespondencia.Rows.Count)
+            {
+                row = this.dgvCorrespondencia.Rows[i];
+                texto = "";
+
+                foreach (DataGridViewCell celda in row.Cells)
+                {
+                    texto += "\t" + celda.Value.ToString();
+                }
+
+                // Calculamos la posición en la que se escribe la línea
+                yPos = topMargin + (count * printFont.GetHeight(e.Graphics));
+
+                // Escribimos la línea con el objeto Graphics
+                e.Graphics.DrawString(texto, printFont, Brushes.Black, 10, yPos);
+
+                count++;
+                i++;
+            }
+
+            // Una vez fuera del bucle comprobamos si nos quedan más filas
+            // por imprimir, si quedan saldrán en la siguiente página
+            if (i < this.dgvCorrespondencia.Rows.Count)
+            {
+                e.HasMorePages = true;
+            }
+            else
+            {
+                // si llegamos al final, se establece HasMorePages a
+                // false para que se acabe la impresión
+                e.HasMorePages = false;
+
+                // Es necesario poner el contador a 0 porque, por ejemplo, si se hace
+                // una impresión desde PrintPreviewDialog, se vuelve a disparar este
+                // evento como si fuese la primera vez, y si i está con el valor de la
+                // última fila del grid no imprime nada
+                i = 0;
+            }
+        }
     }
 }
