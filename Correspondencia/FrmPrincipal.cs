@@ -142,5 +142,11 @@ namespace Correspondencia
             MessageBox.Show("Se encontraron " + nuevos + " registros nuevos y " + duplicados + " registros duplicados", "Importando desde Excel", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.corr_jefaturaTableAdapter.Fill(this.correspondenciaDataSet.corr_jefatura);
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            FrmImprimir imprimir = new FrmImprimir();
+            imprimir.ShowDialog();
+        }
     }
 }
