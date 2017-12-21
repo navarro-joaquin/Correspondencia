@@ -11,6 +11,20 @@ namespace Correspondencia
 {
     public partial class FrmPrincipal : Form
     {
+        int opcion = -1;
+
+        string nro_recepcion;
+        string fecha_recepcion;
+        string remitente;
+        string asunto;
+        string proveido;
+        string destinatario;
+        string prioridad;
+        string fecha_recepcion_destinatario;
+        string fecha_respuesta;
+        string nro_cite_respuesta;
+        string concluido;
+
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -46,36 +60,40 @@ namespace Correspondencia
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string nro_recepcion = txtNroRecepcion.Text;
-            string fecha_recepcion = dtpFechaRecepcion.Value.ToShortDateString();
-            string remitente = txtRemitente.Text;
-            string asunto = txtAsunto.Text;
-            string proveido = txtProveido.Text;
-            string destinatario = txtDestinatario.Text;
-            string prioridad = cmbPrioridad.Text;
-            string fecha_recepcion_destinatario = dtpFechaRecepcionDestinatario.Value.ToShortDateString();
-            string fecha_respuesta = dtpFechaRespuesta.Value.ToShortDateString();
-            string nro_cite_respuesta = txtNroCiteRespuesta.Text;
-            string concluido = cmbConcluido.Text;
+            nro_recepcion = txtNroRecepcion.Text;
+            fecha_recepcion = dtpFechaRecepcion.Value.ToShortDateString();
+            remitente = txtRemitente.Text;
+            asunto = txtAsunto.Text;
+            proveido = txtProveido.Text;
+            destinatario = txtDestinatario.Text;
+            prioridad = cmbPrioridad.Text;
+            fecha_recepcion_destinatario = dtpFechaRecepcionDestinatario.Value.ToShortDateString();
+            fecha_respuesta = dtpFechaRespuesta.Value.ToShortDateString();
+            nro_cite_respuesta = txtNroCiteRespuesta.Text;
+            concluido = cmbConcluido.Text;
             if (chkRecepcionDestinatario.Checked && !chkFechaRespuesta.Checked)
             {
                 this.corr_jefaturaTableAdapter.BuscarSinFechaRespuesta(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, nro_cite_respuesta, concluido);
+                opcion = 1;
             }
             else
             {
                 if (chkFechaRespuesta.Checked && !chkRecepcionDestinatario.Checked)
                 {
                     this.corr_jefaturaTableAdapter.BuscarSinFechaRecepcionDestinatario(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_respuesta, nro_cite_respuesta, concluido);
+                    opcion = 2;
                 }
                 else
                 {
                     if (!chkRecepcionDestinatario.Checked && !chkFechaRespuesta.Checked)
                     {
                         this.corr_jefaturaTableAdapter.BuscarSoloConFechaRecepcion(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, nro_cite_respuesta, concluido);
+                        opcion = 3;
                     }
                     else
                     {
                         this.corr_jefaturaTableAdapter.Buscar(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, fecha_respuesta, nro_cite_respuesta, concluido);
+                        opcion = 0;
                     }
                 }
             }
@@ -145,7 +163,7 @@ namespace Correspondencia
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            FrmImprimir imprimir = new FrmImprimir();
+            FrmImprimir imprimir = new FrmImprimir(opcion, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, fecha_respuesta, nro_cite_respuesta, concluido);
             imprimir.ShowDialog();
         }
     }

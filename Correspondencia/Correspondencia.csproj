@@ -87,6 +87,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>correspondenciaDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsConsultas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsConsultas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EntidadHojaExcel.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="FrmImprimir.cs">
@@ -128,6 +133,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reporte.rdlc" />
     <None Include="app.config" />
     <None Include="correspondenciaDataSet.xsc">
       <DependentUpon>correspondenciaDataSet.xsd</DependentUpon>
@@ -139,6 +145,17 @@
     </None>
     <None Include="correspondenciaDataSet.xss">
       <DependentUpon>correspondenciaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dsConsultas.xsc">
+      <DependentUpon>dsConsultas.xsd</DependentUpon>
+    </None>
+    <None Include="dsConsultas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsConsultas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsConsultas.xss">
+      <DependentUpon>dsConsultas.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

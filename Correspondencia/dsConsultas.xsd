@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsConsultas" targetNamespace="http://tempuri.org/dsConsultas.xsd" xmlns:mstns="http://tempuri.org/dsConsultas.xsd" xmlns="http://tempuri.org/dsConsultas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsConsultas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsConsultas" msprop:Generator_UserDSName="dsConsultas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Busqueda" msprop:Generator_TableClassName="BusquedaDataTable" msprop:Generator_TableVarName="tableBusqueda" msprop:Generator_TablePropName="Busqueda" msprop:Generator_RowDeletingName="BusquedaRowDeleting" msprop:Generator_RowChangingName="BusquedaRowChanging" msprop:Generator_RowEvHandlerName="BusquedaRowChangeEventHandler" msprop:Generator_RowDeletedName="BusquedaRowDeleted" msprop:Generator_UserTableName="Busqueda" msprop:Generator_RowChangedName="BusquedaRowChanged" msprop:Generator_RowEvArgName="BusquedaRowChangeEvent" msprop:Generator_RowClassName="BusquedaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="nro_recepcion" msprop:Generator_ColumnVarNameInTable="columnnro_recepcion" msprop:Generator_ColumnPropNameInRow="nro_recepcion" msprop:Generator_ColumnPropNameInTable="nro_recepcionColumn" msprop:Generator_UserColumnName="nro_recepcion" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha_recepcion" msprop:Generator_ColumnVarNameInTable="columnfecha_recepcion" msprop:Generator_ColumnPropNameInRow="fecha_recepcion" msprop:Generator_ColumnPropNameInTable="fecha_recepcionColumn" msprop:Generator_UserColumnName="fecha_recepcion" type="xs:string" minOccurs="0" />
+              <xs:element name="remitente" msprop:Generator_ColumnVarNameInTable="columnremitente" msprop:Generator_ColumnPropNameInRow="remitente" msprop:Generator_ColumnPropNameInTable="remitenteColumn" msprop:Generator_UserColumnName="remitente" type="xs:string" minOccurs="0" />
+              <xs:element name="asunto" msprop:Generator_ColumnVarNameInTable="columnasunto" msprop:Generator_ColumnPropNameInRow="asunto" msprop:Generator_ColumnPropNameInTable="asuntoColumn" msprop:Generator_UserColumnName="asunto" type="xs:string" minOccurs="0" />
+              <xs:element name="proveido" msprop:Generator_ColumnVarNameInTable="columnproveido" msprop:Generator_ColumnPropNameInRow="proveido" msprop:Generator_ColumnPropNameInTable="proveidoColumn" msprop:Generator_UserColumnName="proveido" type="xs:string" minOccurs="0" />
+              <xs:element name="destinatario" msprop:Generator_ColumnVarNameInTable="columndestinatario" msprop:Generator_ColumnPropNameInRow="destinatario" msprop:Generator_ColumnPropNameInTable="destinatarioColumn" msprop:Generator_UserColumnName="destinatario" type="xs:string" minOccurs="0" />
+              <xs:element name="prioridad" msprop:Generator_ColumnVarNameInTable="columnprioridad" msprop:Generator_ColumnPropNameInRow="prioridad" msprop:Generator_ColumnPropNameInTable="prioridadColumn" msprop:Generator_UserColumnName="prioridad" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha_recepcion_destinatario" msprop:Generator_ColumnVarNameInTable="columnfecha_recepcion_destinatario" msprop:Generator_ColumnPropNameInRow="fecha_recepcion_destinatario" msprop:Generator_ColumnPropNameInTable="fecha_recepcion_destinatarioColumn" msprop:Generator_UserColumnName="fecha_recepcion_destinatario" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha_respusta" msprop:Generator_ColumnVarNameInTable="columnfecha_respusta" msprop:Generator_ColumnPropNameInRow="fecha_respusta" msprop:Generator_ColumnPropNameInTable="fecha_respustaColumn" msprop:Generator_UserColumnName="fecha_respusta" type="xs:string" minOccurs="0" />
+              <xs:element name="nro_cite_respuesta" msprop:Generator_ColumnVarNameInTable="columnnro_cite_respuesta" msprop:Generator_ColumnPropNameInRow="nro_cite_respuesta" msprop:Generator_ColumnPropNameInTable="nro_cite_respuestaColumn" msprop:Generator_UserColumnName="nro_cite_respuesta" type="xs:string" minOccurs="0" />
+              <xs:element name="concluido" msprop:Generator_ColumnVarNameInTable="columnconcluido" msprop:Generator_ColumnPropNameInRow="concluido" msprop:Generator_ColumnPropNameInTable="concluidoColumn" msprop:Generator_UserColumnName="concluido" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
