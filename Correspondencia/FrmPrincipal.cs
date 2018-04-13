@@ -71,29 +71,61 @@ namespace Correspondencia
             fecha_respuesta = dtpFechaRespuesta.Value.ToShortDateString();
             nro_cite_respuesta = txtNroCiteRespuesta.Text;
             concluido = cmbConcluido.Text;
-            if (chkRecepcionDestinatario.Checked && !chkFechaRespuesta.Checked)
+            if (chkRecepcion.Checked && chkRecepcionDestinatario.Checked && !chkRespuesta.Checked)
             {
-                this.corr_jefaturaTableAdapter.BuscarSinFechaRespuesta(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, nro_cite_respuesta, concluido);
+                this.corr_jefaturaTableAdapter.BuscarCaso1(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, nro_cite_respuesta, concluido);
                 opcion = 1;
             }
             else
             {
-                if (chkFechaRespuesta.Checked && !chkRecepcionDestinatario.Checked)
+                if (chkRecepcion.Checked && !chkRecepcionDestinatario.Checked && chkRespuesta.Checked)
                 {
-                    this.corr_jefaturaTableAdapter.BuscarSinFechaRecepcionDestinatario(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_respuesta, nro_cite_respuesta, concluido);
+                    this.corr_jefaturaTableAdapter.BuscarCaso2(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_respuesta, nro_cite_respuesta, concluido);
                     opcion = 2;
                 }
                 else
                 {
-                    if (!chkRecepcionDestinatario.Checked && !chkFechaRespuesta.Checked)
+                    if (chkRecepcion.Checked && !chkRecepcionDestinatario.Checked && !chkRespuesta.Checked)
                     {
-                        this.corr_jefaturaTableAdapter.BuscarSoloConFechaRecepcion(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, nro_cite_respuesta, concluido);
+                        this.corr_jefaturaTableAdapter.BuscarCaso3(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, nro_cite_respuesta, concluido);
                         opcion = 3;
                     }
                     else
                     {
-                        this.corr_jefaturaTableAdapter.Buscar(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, fecha_respuesta, nro_cite_respuesta, concluido);
-                        opcion = 0;
+                        if (!chkRecepcion.Checked && chkRecepcionDestinatario.Checked && chkRespuesta.Checked)
+                        {
+                            this.corr_jefaturaTableAdapter.BuscarCaso4(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, fecha_respuesta, nro_cite_respuesta, concluido);
+                            opcion = 4;
+                        }
+                        else
+                        {
+                            if (!chkRecepcion.Checked && chkRecepcionDestinatario.Checked && !chkRespuesta.Checked)
+                            {
+                                this.corr_jefaturaTableAdapter.BuscarCaso5(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, nro_cite_respuesta, concluido);
+                                opcion = 5;
+                            }
+                            else
+                            {
+                                if (!chkRecepcion.Checked && !chkRecepcionDestinatario.Checked && chkRespuesta.Checked)
+                                {
+                                    this.corr_jefaturaTableAdapter.BuscarCaso6(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_respuesta, nro_cite_respuesta, concluido);
+                                    opcion = 6;
+                                }
+                                else
+                                {
+                                    if (!chkRecepcion.Checked && !chkRecepcionDestinatario.Checked && !chkRespuesta.Checked)
+                                    {
+                                        this.corr_jefaturaTableAdapter.BuscarCaso7(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, remitente, asunto, proveido, destinatario, prioridad, nro_cite_respuesta, concluido);
+                                        opcion = 7;
+                                    }
+                                    else
+                                    {
+                                        this.corr_jefaturaTableAdapter.BuscarCaso0(this.correspondenciaDataSet.corr_jefatura, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, fecha_respuesta, nro_cite_respuesta, concluido);
+                                        opcion = 0;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -127,14 +159,26 @@ namespace Correspondencia
             foreach(EntidadHojaExcel hoja in resultado)
             {
                 string nro_recepcion = hoja.nro_recepcion;
-                string fecha_recepcion = hoja.fecha_recepcion.Substring(0, 10);
+                string fecha_recepcion = "";
+                if (!(hoja.fecha_recepcion.Equals("")))
+                {
+                    fecha_recepcion = hoja.fecha_recepcion.Substring(0, 10);
+                } 
                 string remitente = hoja.remitente;
                 string asunto = hoja.asunto;
                 string proveido = hoja.proveido;
                 string destinatario = hoja.destinatario;
                 string prioridad = hoja.prioridad;
-                string fecha_recepcion_destinatario = hoja.fecha_recepcion_destinatario.Substring(0, 10);
-                string fecha_respuesta = hoja.fecha_respuesta.Substring(0, 10);
+                string fecha_recepcion_destinatario = "";
+                string fecha_respuesta = "";
+                if (!(hoja.fecha_recepcion_destinatario.Equals("")))
+                {
+                    fecha_recepcion_destinatario = hoja.fecha_recepcion_destinatario.Substring(0, 10);
+                }
+                if (!(hoja.fecha_respuesta.Equals("")))
+                {
+                    fecha_respuesta = hoja.fecha_respuesta.Substring(0, 10);
+                }
                 string nro_cite_respuesta = hoja.nro_cite_respuesta;
                 string concluido = hoja.concluido;
                 int duplicado = Convert.ToInt32(this.corr_jefaturaTableAdapter.BuscarDuplicados(nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, fecha_respuesta, nro_cite_respuesta, concluido));
@@ -165,6 +209,32 @@ namespace Correspondencia
         {
             FrmImprimir imprimir = new FrmImprimir(opcion, nro_recepcion, fecha_recepcion, remitente, asunto, proveido, destinatario, prioridad, fecha_recepcion_destinatario, fecha_respuesta, nro_cite_respuesta, concluido);
             imprimir.ShowDialog();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmacion = MessageBox.Show("¿Está seguro que desea eliminar el valor seleccionado?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (confirmacion == DialogResult.OK)
+            {
+                try
+                {
+                    int id = Convert.ToInt32(dgvCorrespondencia.CurrentRow.Cells[0].Value);
+                    this.corr_jefaturaTableAdapter.Eliminar(id);
+                    MessageBox.Show("Datos eliminados con éxito", "Eliminado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.corr_jefaturaTableAdapter.Fill(this.correspondenciaDataSet.corr_jefatura);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ha ocurrido un error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+        }
+
+        private void btnTodos_Click(object sender, EventArgs e)
+        {
+            this.corr_jefaturaTableAdapter.Fill(this.correspondenciaDataSet.corr_jefatura);
+            opcion = -1;
         }
     }
 }

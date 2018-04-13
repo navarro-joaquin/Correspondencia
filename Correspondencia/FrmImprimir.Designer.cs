@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dsConsultas = new Correspondencia.dsConsultas();
             this.BusquedaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dsConsultas)).BeginInit();
+            this.dsConsultas = new Correspondencia.dsConsultas();
             ((System.ComponentModel.ISupportInitialize)(this.BusquedaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsConsultas)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
@@ -50,15 +50,15 @@
             this.reportViewer1.Size = new System.Drawing.Size(895, 415);
             this.reportViewer1.TabIndex = 0;
             // 
-            // dsConsultas
-            // 
-            this.dsConsultas.DataSetName = "dsConsultas";
-            this.dsConsultas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // BusquedaBindingSource
             // 
             this.BusquedaBindingSource.DataMember = "Busqueda";
             this.BusquedaBindingSource.DataSource = this.dsConsultas;
+            // 
+            // dsConsultas
+            // 
+            this.dsConsultas.DataSetName = "dsConsultas";
+            this.dsConsultas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // FrmImprimir
             // 
@@ -69,8 +69,8 @@
             this.Name = "FrmImprimir";
             this.Text = "FrmImprimir";
             this.Load += new System.EventHandler(this.FrmImprimir_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dsConsultas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BusquedaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsConsultas)).EndInit();
             this.ResumeLayout(false);
 
         }

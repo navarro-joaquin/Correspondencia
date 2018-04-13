@@ -1398,7 +1398,7 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[9];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[14];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido" +
@@ -1488,11 +1488,10 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[1].Parameters.Add(param);
             this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT COUNT(*) FROM `corr_jefatura` WHERE `nro_recepcion` LIKE @nro_recepcion AND `fecha_recepcion` LIKE @fecha_recepcion AND `remitente` LIKE @remitente AND `asunto` LIKE @asunto AND `proveido` LIKE @proveido AND `destinatario` LIKE @destinatario AND `prioridad` LIKE @prioridad AND `fecha_recepcion_destinatario` LIKE @fecha_recepcion_destinatario AND `fecha_respuesta` LIKE @fecha_respuesta AND `nro_cite_respuesta` LIKE @nro_cite_respuesta AND `concluido` LIKE @concluido";
+            this._commandCollection[2].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`fecha_recepcion` LIKE CONCAT('%', @fecha_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`fecha_recepcion_destinatario` LIKE CONCAT('%', @fecha_recepcion_destinatario, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_recepcion";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
@@ -1500,7 +1499,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@fecha_recepcion";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
@@ -1508,7 +1506,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@remitente";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 200;
             param.IsNullable = true;
@@ -1516,7 +1513,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@asunto";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 1000;
             param.IsNullable = true;
@@ -1524,7 +1520,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@proveido";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 2000;
             param.IsNullable = true;
@@ -1532,7 +1527,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@destinatario";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 1000;
             param.IsNullable = true;
@@ -1540,7 +1534,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@prioridad";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 50;
             param.IsNullable = true;
@@ -1548,23 +1541,13 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@fecha_recepcion_destinatario";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
             param.SourceColumn = "fecha_recepcion_destinatario";
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_respuesta";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_respuesta";
-            this._commandCollection[2].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_cite_respuesta";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
@@ -1572,7 +1555,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@concluido";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 2;
             param.IsNullable = true;
@@ -1580,20 +1562,81 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido" +
-                "`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta" +
-                "`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE `id` = @id";
+            this._commandCollection[3].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`fecha_recepcion` LIKE CONCAT('%', @fecha_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`fecha_respuesta` LIKE CONCAT('%', @fecha_respuesta, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.ParameterName = "@nro_recepcion";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
             param.IsNullable = true;
-            param.SourceColumn = "id";
+            param.SourceColumn = "nro_recepcion";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_recepcion";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_recepcion";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@remitente";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 200;
+            param.IsNullable = true;
+            param.SourceColumn = "remitente";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@asunto";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 1000;
+            param.IsNullable = true;
+            param.SourceColumn = "asunto";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@proveido";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 2000;
+            param.IsNullable = true;
+            param.SourceColumn = "proveido";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@destinatario";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 1000;
+            param.IsNullable = true;
+            param.SourceColumn = "destinatario";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@prioridad";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "prioridad";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_respuesta";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_respuesta";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@nro_cite_respuesta";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "nro_cite_respuesta";
+            this._commandCollection[3].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@concluido";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 2;
+            param.IsNullable = true;
+            param.SourceColumn = "concluido";
             this._commandCollection[3].Parameters.Add(param);
             this._commandCollection[4] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`fecha_recepcion` LIKE CONCAT('%', @fecha_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`fecha_respuesta` LIKE CONCAT('%', @fecha_respuesta, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
+            this._commandCollection[4].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`fecha_recepcion` LIKE CONCAT('%', @fecha_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_recepcion";
@@ -1645,13 +1688,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             param.SourceColumn = "prioridad";
             this._commandCollection[4].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_respuesta";
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_respuesta";
-            this._commandCollection[4].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_cite_respuesta";
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
@@ -1667,7 +1703,7 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[4].Parameters.Add(param);
             this._commandCollection[5] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`fecha_recepcion` LIKE CONCAT('%', @fecha_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`fecha_recepcion_destinatario` LIKE CONCAT('%', @fecha_recepcion_destinatario, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
+            this._commandCollection[5].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`fecha_recepcion_destinatario` LIKE CONCAT('%', @fecha_recepcion_destinatario, '%')) AND (`fecha_respuesta` LIKE CONCAT('%', @fecha_respuesta, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_recepcion";
@@ -1675,13 +1711,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             param.Size = 10;
             param.IsNullable = true;
             param.SourceColumn = "nro_recepcion";
-            this._commandCollection[5].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_recepcion";
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_recepcion";
             this._commandCollection[5].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@remitente";
@@ -1724,6 +1753,13 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             param.Size = 10;
             param.IsNullable = true;
             param.SourceColumn = "fecha_recepcion_destinatario";
+            this._commandCollection[5].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_respuesta";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_respuesta";
             this._commandCollection[5].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_cite_respuesta";
@@ -1741,7 +1777,7 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[5].Parameters.Add(param);
             this._commandCollection[6] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`fecha_recepcion` LIKE CONCAT('%', @fecha_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
+            this._commandCollection[6].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`fecha_recepcion_destinatario` LIKE CONCAT('%', @fecha_recepcion_destinatario, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_recepcion";
@@ -1749,13 +1785,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             param.Size = 10;
             param.IsNullable = true;
             param.SourceColumn = "nro_recepcion";
-            this._commandCollection[6].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_recepcion";
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_recepcion";
             this._commandCollection[6].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@remitente";
@@ -1791,6 +1820,13 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             param.Size = 50;
             param.IsNullable = true;
             param.SourceColumn = "prioridad";
+            this._commandCollection[6].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_recepcion_destinatario";
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_recepcion_destinatario";
             this._commandCollection[6].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_cite_respuesta";
@@ -1808,27 +1844,17 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[6].Parameters.Add(param);
             this._commandCollection[7] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = @"INSERT INTO `corr_jefatura` (`nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido`) VALUES (@nro_recepcion, @fecha_recepcion, @remitente, @asunto, @proveido, @destinatario, @prioridad, @fecha_recepcion_destinatario, @fecha_respuesta, @nro_cite_respuesta, @concluido)";
+            this._commandCollection[7].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`fecha_respuesta` LIKE CONCAT('%', @fecha_respuesta, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_recepcion";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
             param.SourceColumn = "nro_recepcion";
             this._commandCollection[7].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_recepcion";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_recepcion";
-            this._commandCollection[7].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@remitente";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 200;
             param.IsNullable = true;
@@ -1836,7 +1862,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[7].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@asunto";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 1000;
             param.IsNullable = true;
@@ -1844,7 +1869,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[7].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@proveido";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 2000;
             param.IsNullable = true;
@@ -1852,7 +1876,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[7].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@destinatario";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 1000;
             param.IsNullable = true;
@@ -1860,23 +1883,13 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[7].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@prioridad";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 50;
             param.IsNullable = true;
             param.SourceColumn = "prioridad";
             this._commandCollection[7].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_recepcion_destinatario";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_recepcion_destinatario";
-            this._commandCollection[7].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@fecha_respuesta";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
@@ -1884,7 +1897,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[7].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_cite_respuesta";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
@@ -1892,7 +1904,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[7].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@concluido";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 2;
             param.IsNullable = true;
@@ -1900,27 +1911,17 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[7].Parameters.Add(param);
             this._commandCollection[8] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = @"UPDATE `corr_jefatura` SET `nro_recepcion` = @nro_recepcion, `fecha_recepcion` = @fecha_recepcion, `remitente` = @remitente, `asunto` = @asunto, `proveido` = @proveido, `destinatario` = @destinatario, `prioridad` = @prioridad, `fecha_recepcion_destinatario` = @fecha_recepcion_destinatario, `fecha_respuesta` = @fecha_respuesta, `nro_cite_respuesta` = @nro_cite_respuesta, `concluido` = @concluido WHERE (`id` = @Original_id)";
+            this._commandCollection[8].CommandText = @"SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', @nro_recepcion, '%')) AND (`remitente` LIKE CONCAT('%', @remitente, '%')) AND (`asunto` LIKE CONCAT('%', @asunto, '%')) AND (`proveido` LIKE CONCAT('%', @proveido, '%')) AND (`destinatario` LIKE CONCAT('%', @destinatario, '%')) AND (`prioridad` LIKE CONCAT('%', @prioridad, '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', @nro_cite_respuesta, '%')) AND (`concluido` LIKE CONCAT('%', @concluido, '%'))";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_recepcion";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
             param.SourceColumn = "nro_recepcion";
             this._commandCollection[8].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_recepcion";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_recepcion";
-            this._commandCollection[8].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@remitente";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 200;
             param.IsNullable = true;
@@ -1928,7 +1929,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[8].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@asunto";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 1000;
             param.IsNullable = true;
@@ -1936,7 +1936,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[8].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@proveido";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 2000;
             param.IsNullable = true;
@@ -1944,7 +1943,6 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[8].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@destinatario";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 1000;
             param.IsNullable = true;
@@ -1952,31 +1950,13 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[8].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@prioridad";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 50;
             param.IsNullable = true;
             param.SourceColumn = "prioridad";
             this._commandCollection[8].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_recepcion_destinatario";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_recepcion_destinatario";
-            this._commandCollection[8].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@fecha_respuesta";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 10;
-            param.IsNullable = true;
-            param.SourceColumn = "fecha_respuesta";
-            this._commandCollection[8].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@nro_cite_respuesta";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 10;
             param.IsNullable = true;
@@ -1984,12 +1964,312 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             this._commandCollection[8].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@concluido";
-            param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 2;
             param.IsNullable = true;
             param.SourceColumn = "concluido";
             this._commandCollection[8].Parameters.Add(param);
+            this._commandCollection[9] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[9].Connection = this.Connection;
+            this._commandCollection[9].CommandText = @"SELECT COUNT(*) FROM `corr_jefatura` WHERE `nro_recepcion` LIKE @nro_recepcion AND `fecha_recepcion` LIKE @fecha_recepcion AND `remitente` LIKE @remitente AND `asunto` LIKE @asunto AND `proveido` LIKE @proveido AND `destinatario` LIKE @destinatario AND `prioridad` LIKE @prioridad AND `fecha_recepcion_destinatario` LIKE @fecha_recepcion_destinatario AND `fecha_respuesta` LIKE @fecha_respuesta AND `nro_cite_respuesta` LIKE @nro_cite_respuesta AND `concluido` LIKE @concluido";
+            this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@nro_recepcion";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "nro_recepcion";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_recepcion";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_recepcion";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@remitente";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 200;
+            param.IsNullable = true;
+            param.SourceColumn = "remitente";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@asunto";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 1000;
+            param.IsNullable = true;
+            param.SourceColumn = "asunto";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@proveido";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 2000;
+            param.IsNullable = true;
+            param.SourceColumn = "proveido";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@destinatario";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 1000;
+            param.IsNullable = true;
+            param.SourceColumn = "destinatario";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@prioridad";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "prioridad";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_recepcion_destinatario";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_recepcion_destinatario";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_respuesta";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_respuesta";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@nro_cite_respuesta";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "nro_cite_respuesta";
+            this._commandCollection[9].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@concluido";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 2;
+            param.IsNullable = true;
+            param.SourceColumn = "concluido";
+            this._commandCollection[9].Parameters.Add(param);
+            this._commandCollection[10] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[10].Connection = this.Connection;
+            this._commandCollection[10].CommandText = "SELECT `id`, `nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido" +
+                "`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta" +
+                "`, `nro_cite_respuesta`, `concluido` FROM `corr_jefatura` WHERE `id` = @id";
+            this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@id";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "id";
+            this._commandCollection[10].Parameters.Add(param);
+            this._commandCollection[11] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[11].Connection = this.Connection;
+            this._commandCollection[11].CommandText = "DELETE FROM `corr_jefatura` WHERE (`id` = @Original_Id)";
+            this._commandCollection[11].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_Id";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._commandCollection[11].Parameters.Add(param);
+            this._commandCollection[12] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[12].Connection = this.Connection;
+            this._commandCollection[12].CommandText = @"INSERT INTO `corr_jefatura` (`nro_recepcion`, `fecha_recepcion`, `remitente`, `asunto`, `proveido`, `destinatario`, `prioridad`, `fecha_recepcion_destinatario`, `fecha_respuesta`, `nro_cite_respuesta`, `concluido`) VALUES (@nro_recepcion, @fecha_recepcion, @remitente, @asunto, @proveido, @destinatario, @prioridad, @fecha_recepcion_destinatario, @fecha_respuesta, @nro_cite_respuesta, @concluido)";
+            this._commandCollection[12].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@nro_recepcion";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "nro_recepcion";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_recepcion";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_recepcion";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@remitente";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 200;
+            param.IsNullable = true;
+            param.SourceColumn = "remitente";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@asunto";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 1000;
+            param.IsNullable = true;
+            param.SourceColumn = "asunto";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@proveido";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 2000;
+            param.IsNullable = true;
+            param.SourceColumn = "proveido";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@destinatario";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 1000;
+            param.IsNullable = true;
+            param.SourceColumn = "destinatario";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@prioridad";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "prioridad";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_recepcion_destinatario";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_recepcion_destinatario";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_respuesta";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_respuesta";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@nro_cite_respuesta";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "nro_cite_respuesta";
+            this._commandCollection[12].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@concluido";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 2;
+            param.IsNullable = true;
+            param.SourceColumn = "concluido";
+            this._commandCollection[12].Parameters.Add(param);
+            this._commandCollection[13] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[13].Connection = this.Connection;
+            this._commandCollection[13].CommandText = @"UPDATE `corr_jefatura` SET `nro_recepcion` = @nro_recepcion, `fecha_recepcion` = @fecha_recepcion, `remitente` = @remitente, `asunto` = @asunto, `proveido` = @proveido, `destinatario` = @destinatario, `prioridad` = @prioridad, `fecha_recepcion_destinatario` = @fecha_recepcion_destinatario, `fecha_respuesta` = @fecha_respuesta, `nro_cite_respuesta` = @nro_cite_respuesta, `concluido` = @concluido WHERE (`id` = @Original_id)";
+            this._commandCollection[13].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@nro_recepcion";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "nro_recepcion";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_recepcion";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_recepcion";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@remitente";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 200;
+            param.IsNullable = true;
+            param.SourceColumn = "remitente";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@asunto";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 1000;
+            param.IsNullable = true;
+            param.SourceColumn = "asunto";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@proveido";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 2000;
+            param.IsNullable = true;
+            param.SourceColumn = "proveido";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@destinatario";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 1000;
+            param.IsNullable = true;
+            param.SourceColumn = "destinatario";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@prioridad";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "prioridad";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_recepcion_destinatario";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_recepcion_destinatario";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@fecha_respuesta";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "fecha_respuesta";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@nro_cite_respuesta";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "nro_cite_respuesta";
+            this._commandCollection[13].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@concluido";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 2;
+            param.IsNullable = true;
+            param.SourceColumn = "concluido";
+            this._commandCollection[13].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Original_id";
             param.DbType = global::System.Data.DbType.Int32;
@@ -1997,7 +2277,7 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "id";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._commandCollection[8].Parameters.Add(param);
+            this._commandCollection[13].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2028,7 +2308,7 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int Buscar(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string fecha_respuesta, string nro_cite_respuesta, string concluido) {
+        public virtual int BuscarCaso0(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string fecha_respuesta, string nro_cite_respuesta, string concluido) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((nro_recepcion == null)) {
                 throw new global::System.ArgumentNullException("nro_recepcion");
@@ -2107,95 +2387,8 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int BuscarPorID(correspondenciaDataSet.corr_jefaturaDataTable dataTable, int id) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(id));
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int BuscarSinFechaRecepcionDestinatario(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_respuesta, string nro_cite_respuesta, string concluido) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
-            if ((nro_recepcion == null)) {
-                throw new global::System.ArgumentNullException("nro_recepcion");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nro_recepcion));
-            }
-            if ((fecha_recepcion == null)) {
-                throw new global::System.ArgumentNullException("fecha_recepcion");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(fecha_recepcion));
-            }
-            if ((remitente == null)) {
-                throw new global::System.ArgumentNullException("remitente");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(remitente));
-            }
-            if ((asunto == null)) {
-                throw new global::System.ArgumentNullException("asunto");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(asunto));
-            }
-            if ((proveido == null)) {
-                throw new global::System.ArgumentNullException("proveido");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(proveido));
-            }
-            if ((destinatario == null)) {
-                throw new global::System.ArgumentNullException("destinatario");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(destinatario));
-            }
-            if ((prioridad == null)) {
-                throw new global::System.ArgumentNullException("prioridad");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(prioridad));
-            }
-            if ((fecha_respuesta == null)) {
-                throw new global::System.ArgumentNullException("fecha_respuesta");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(fecha_respuesta));
-            }
-            if ((nro_cite_respuesta == null)) {
-                throw new global::System.ArgumentNullException("nro_cite_respuesta");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(nro_cite_respuesta));
-            }
-            if ((concluido == null)) {
-                throw new global::System.ArgumentNullException("concluido");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[9].Value = ((string)(concluido));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int BuscarSinFechaRespuesta(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string nro_cite_respuesta, string concluido) {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+        public virtual int BuscarCaso1(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string nro_cite_respuesta, string concluido) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((nro_recepcion == null)) {
                 throw new global::System.ArgumentNullException("nro_recepcion");
             }
@@ -2267,8 +2460,81 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int BuscarSoloConFechaRecepcion(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string nro_cite_respuesta, string concluido) {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+        public virtual int BuscarCaso2(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_respuesta, string nro_cite_respuesta, string concluido) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((nro_recepcion == null)) {
+                throw new global::System.ArgumentNullException("nro_recepcion");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nro_recepcion));
+            }
+            if ((fecha_recepcion == null)) {
+                throw new global::System.ArgumentNullException("fecha_recepcion");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(fecha_recepcion));
+            }
+            if ((remitente == null)) {
+                throw new global::System.ArgumentNullException("remitente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(remitente));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(asunto));
+            }
+            if ((proveido == null)) {
+                throw new global::System.ArgumentNullException("proveido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(proveido));
+            }
+            if ((destinatario == null)) {
+                throw new global::System.ArgumentNullException("destinatario");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(destinatario));
+            }
+            if ((prioridad == null)) {
+                throw new global::System.ArgumentNullException("prioridad");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(prioridad));
+            }
+            if ((fecha_respuesta == null)) {
+                throw new global::System.ArgumentNullException("fecha_respuesta");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(fecha_respuesta));
+            }
+            if ((nro_cite_respuesta == null)) {
+                throw new global::System.ArgumentNullException("nro_cite_respuesta");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(nro_cite_respuesta));
+            }
+            if ((concluido == null)) {
+                throw new global::System.ArgumentNullException("concluido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[9].Value = ((string)(concluido));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int BuscarCaso3(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string nro_cite_respuesta, string concluido) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((nro_recepcion == null)) {
                 throw new global::System.ArgumentNullException("nro_recepcion");
             }
@@ -2323,6 +2589,288 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[8].Value = ((string)(concluido));
             }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int BuscarCaso4(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string fecha_respuesta, string nro_cite_respuesta, string concluido) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            if ((nro_recepcion == null)) {
+                throw new global::System.ArgumentNullException("nro_recepcion");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nro_recepcion));
+            }
+            if ((remitente == null)) {
+                throw new global::System.ArgumentNullException("remitente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(remitente));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(asunto));
+            }
+            if ((proveido == null)) {
+                throw new global::System.ArgumentNullException("proveido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(proveido));
+            }
+            if ((destinatario == null)) {
+                throw new global::System.ArgumentNullException("destinatario");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(destinatario));
+            }
+            if ((prioridad == null)) {
+                throw new global::System.ArgumentNullException("prioridad");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(prioridad));
+            }
+            if ((fecha_recepcion_destinatario == null)) {
+                throw new global::System.ArgumentNullException("fecha_recepcion_destinatario");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(fecha_recepcion_destinatario));
+            }
+            if ((fecha_respuesta == null)) {
+                throw new global::System.ArgumentNullException("fecha_respuesta");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(fecha_respuesta));
+            }
+            if ((nro_cite_respuesta == null)) {
+                throw new global::System.ArgumentNullException("nro_cite_respuesta");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(nro_cite_respuesta));
+            }
+            if ((concluido == null)) {
+                throw new global::System.ArgumentNullException("concluido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[9].Value = ((string)(concluido));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int BuscarCaso5(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string nro_cite_respuesta, string concluido) {
+            this.Adapter.SelectCommand = this.CommandCollection[6];
+            if ((nro_recepcion == null)) {
+                throw new global::System.ArgumentNullException("nro_recepcion");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nro_recepcion));
+            }
+            if ((remitente == null)) {
+                throw new global::System.ArgumentNullException("remitente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(remitente));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(asunto));
+            }
+            if ((proveido == null)) {
+                throw new global::System.ArgumentNullException("proveido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(proveido));
+            }
+            if ((destinatario == null)) {
+                throw new global::System.ArgumentNullException("destinatario");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(destinatario));
+            }
+            if ((prioridad == null)) {
+                throw new global::System.ArgumentNullException("prioridad");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(prioridad));
+            }
+            if ((fecha_recepcion_destinatario == null)) {
+                throw new global::System.ArgumentNullException("fecha_recepcion_destinatario");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(fecha_recepcion_destinatario));
+            }
+            if ((nro_cite_respuesta == null)) {
+                throw new global::System.ArgumentNullException("nro_cite_respuesta");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(nro_cite_respuesta));
+            }
+            if ((concluido == null)) {
+                throw new global::System.ArgumentNullException("concluido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(concluido));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int BuscarCaso6(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_respuesta, string nro_cite_respuesta, string concluido) {
+            this.Adapter.SelectCommand = this.CommandCollection[7];
+            if ((nro_recepcion == null)) {
+                throw new global::System.ArgumentNullException("nro_recepcion");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nro_recepcion));
+            }
+            if ((remitente == null)) {
+                throw new global::System.ArgumentNullException("remitente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(remitente));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(asunto));
+            }
+            if ((proveido == null)) {
+                throw new global::System.ArgumentNullException("proveido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(proveido));
+            }
+            if ((destinatario == null)) {
+                throw new global::System.ArgumentNullException("destinatario");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(destinatario));
+            }
+            if ((prioridad == null)) {
+                throw new global::System.ArgumentNullException("prioridad");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(prioridad));
+            }
+            if ((fecha_respuesta == null)) {
+                throw new global::System.ArgumentNullException("fecha_respuesta");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(fecha_respuesta));
+            }
+            if ((nro_cite_respuesta == null)) {
+                throw new global::System.ArgumentNullException("nro_cite_respuesta");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(nro_cite_respuesta));
+            }
+            if ((concluido == null)) {
+                throw new global::System.ArgumentNullException("concluido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(concluido));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int BuscarCaso7(correspondenciaDataSet.corr_jefaturaDataTable dataTable, string nro_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string nro_cite_respuesta, string concluido) {
+            this.Adapter.SelectCommand = this.CommandCollection[8];
+            if ((nro_recepcion == null)) {
+                throw new global::System.ArgumentNullException("nro_recepcion");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(nro_recepcion));
+            }
+            if ((remitente == null)) {
+                throw new global::System.ArgumentNullException("remitente");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(remitente));
+            }
+            if ((asunto == null)) {
+                throw new global::System.ArgumentNullException("asunto");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(asunto));
+            }
+            if ((proveido == null)) {
+                throw new global::System.ArgumentNullException("proveido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(proveido));
+            }
+            if ((destinatario == null)) {
+                throw new global::System.ArgumentNullException("destinatario");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(destinatario));
+            }
+            if ((prioridad == null)) {
+                throw new global::System.ArgumentNullException("prioridad");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(prioridad));
+            }
+            if ((nro_cite_respuesta == null)) {
+                throw new global::System.ArgumentNullException("nro_cite_respuesta");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(nro_cite_respuesta));
+            }
+            if ((concluido == null)) {
+                throw new global::System.ArgumentNullException("concluido");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(concluido));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int BuscarPorID(correspondenciaDataSet.corr_jefaturaDataTable dataTable, int id) {
+            this.Adapter.SelectCommand = this.CommandCollection[10];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(id));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2715,7 +3263,7 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual object BuscarDuplicados(string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string fecha_respuesta, string nro_cite_respuesta, string concluido) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[9];
             if ((nro_recepcion == null)) {
                 throw new global::System.ArgumentNullException("nro_recepcion");
             }
@@ -2808,9 +3356,33 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int Eliminar(int Original_Id) {
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[11];
+            command.Parameters[0].Value = ((int)(Original_Id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int Insertar(string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string fecha_respuesta, string nro_cite_respuesta, string concluido) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[7];
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[12];
             if ((nro_recepcion == null)) {
                 throw new global::System.ArgumentNullException("nro_recepcion");
             }
@@ -2899,7 +3471,7 @@ namespace Correspondencia.correspondenciaDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int Modificar(string nro_recepcion, string fecha_recepcion, string remitente, string asunto, string proveido, string destinatario, string prioridad, string fecha_recepcion_destinatario, string fecha_respuesta, string nro_cite_respuesta, string concluido, int Original_id) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[8];
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[13];
             if ((nro_recepcion == null)) {
                 throw new global::System.ArgumentNullException("nro_recepcion");
             }

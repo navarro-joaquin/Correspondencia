@@ -68,6 +68,18 @@ namespace Correspondencia
                 case 3:
                     consulta = "SELECT * FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', '" + nro_recepcion + "', '%')) AND (`fecha_recepcion` LIKE CONCAT('%', '" + fecha_recepcion + "', '%')) AND (`remitente` LIKE CONCAT('%', '" + remitente + "', '%')) AND (`asunto` LIKE CONCAT('%', '" + asunto + "', '%')) AND (`proveido` LIKE CONCAT('%', '" + proveido + "', '%')) AND (`destinatario` LIKE CONCAT('%', '" + destinatario + "', '%')) AND (`prioridad` LIKE CONCAT('%', '" + prioridad + "', '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', '" + nro_cite_respuesta + "', '%')) AND (`concluido` LIKE CONCAT('%', '" + concluido + "', '%'))";
                     break;
+                case 4:
+                    consulta = "SELECT * FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', '" + nro_recepcion + "', '%')) AND (`remitente` LIKE CONCAT('%', '" + remitente + "', '%')) AND (`asunto` LIKE CONCAT('%', '" + asunto + "', '%')) AND (`proveido` LIKE CONCAT('%', '" + proveido + "', '%')) AND (`destinatario` LIKE CONCAT('%', '" + destinatario + "', '%')) AND (`prioridad` LIKE CONCAT('%', '" + prioridad + "', '%')) AND (`fecha_recepcion_destinatario` LIKE CONCAT('%', '" + fecha_recepcion_destinatario + "', '%')) AND (`fecha_respuesta` LIKE CONCAT('%', '" + fecha_respuesta + "', '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', '" + nro_cite_respuesta + "', '%')) AND (`concluido` LIKE CONCAT('%', '" + concluido + "', '%'))";
+                    break;
+                case 5:
+                    consulta = "SELECT * FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', '" + nro_recepcion + "', '%')) AND (`remitente` LIKE CONCAT('%', '" + remitente + "', '%')) AND (`asunto` LIKE CONCAT('%', '" + asunto + "', '%')) AND (`proveido` LIKE CONCAT('%', '" + proveido + "', '%')) AND (`destinatario` LIKE CONCAT('%', '" + destinatario + "', '%')) AND (`prioridad` LIKE CONCAT('%', '" + prioridad + "', '%')) AND (`fecha_recepcion_destinatario` LIKE CONCAT('%', '" + fecha_recepcion_destinatario + "', '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', '" + nro_cite_respuesta + "', '%')) AND (`concluido` LIKE CONCAT('%', '" + concluido + "', '%'))";
+                    break;
+                case 6:
+                    consulta = "SELECT * FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', '" + nro_recepcion + "', '%')) AND (`remitente` LIKE CONCAT('%', '" + remitente + "', '%')) AND (`asunto` LIKE CONCAT('%', '" + asunto + "', '%')) AND (`proveido` LIKE CONCAT('%', '" + proveido + "', '%')) AND (`destinatario` LIKE CONCAT('%', '" + destinatario + "', '%')) AND (`prioridad` LIKE CONCAT('%', '" + prioridad + "', '%')) AND (`fecha_respuesta` LIKE CONCAT('%', '" + fecha_respuesta + "', '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', '" + nro_cite_respuesta + "', '%')) AND (`concluido` LIKE CONCAT('%', '" + concluido + "', '%'))";
+                    break;
+                case 7:
+                    consulta = "SELECT * FROM `corr_jefatura` WHERE (`nro_recepcion` LIKE CONCAT('%', '" + nro_recepcion + "', '%')) AND (`remitente` LIKE CONCAT('%', '" + remitente + "', '%')) AND (`asunto` LIKE CONCAT('%', '" + asunto + "', '%')) AND (`proveido` LIKE CONCAT('%', '" + proveido + "', '%')) AND (`destinatario` LIKE CONCAT('%', '" + destinatario + "', '%')) AND (`prioridad` LIKE CONCAT('%', '" + prioridad + "', '%')) AND (`nro_cite_respuesta` LIKE CONCAT('%', '" + nro_cite_respuesta + "', '%')) AND (`concluido` LIKE CONCAT('%', '" + concluido + "', '%'))";
+                    break;
                 default:
                     consulta = "select * from corr_jefatura";
                     break;

@@ -55,7 +55,7 @@
             this.lblConcluido = new System.Windows.Forms.Label();
             this.txtNroCiteRespuesta = new System.Windows.Forms.TextBox();
             this.lblNroCiteRespuesta = new System.Windows.Forms.Label();
-            this.chkFechaRespuesta = new System.Windows.Forms.CheckBox();
+            this.chkRespuesta = new System.Windows.Forms.CheckBox();
             this.chkRecepcionDestinatario = new System.Windows.Forms.CheckBox();
             this.dtpFechaRespuesta = new System.Windows.Forms.DateTimePicker();
             this.lblFechaRespuesta = new System.Windows.Forms.Label();
@@ -77,6 +77,9 @@
             this.lblNroRecepcion = new System.Windows.Forms.Label();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnTodos = new System.Windows.Forms.Button();
+            this.chkRecepcion = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCorrespondencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.corr_jefaturaBindingSource)).BeginInit();
@@ -238,7 +241,7 @@
             // 
             // btnVerModificar
             // 
-            this.btnVerModificar.Location = new System.Drawing.Point(790, 528);
+            this.btnVerModificar.Location = new System.Drawing.Point(123, 528);
             this.btnVerModificar.Name = "btnVerModificar";
             this.btnVerModificar.Size = new System.Drawing.Size(103, 41);
             this.btnVerModificar.TabIndex = 2;
@@ -248,12 +251,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkRecepcion);
             this.groupBox2.Controls.Add(this.btnBuscar);
             this.groupBox2.Controls.Add(this.cmbConcluido);
             this.groupBox2.Controls.Add(this.lblConcluido);
             this.groupBox2.Controls.Add(this.txtNroCiteRespuesta);
             this.groupBox2.Controls.Add(this.lblNroCiteRespuesta);
-            this.groupBox2.Controls.Add(this.chkFechaRespuesta);
+            this.groupBox2.Controls.Add(this.chkRespuesta);
             this.groupBox2.Controls.Add(this.chkRecepcionDestinatario);
             this.groupBox2.Controls.Add(this.dtpFechaRespuesta);
             this.groupBox2.Controls.Add(this.lblFechaRespuesta);
@@ -276,7 +280,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(881, 176);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Buscar";
             // 
@@ -328,14 +332,14 @@
             this.lblNroCiteRespuesta.TabIndex = 20;
             this.lblNroCiteRespuesta.Text = "Nro de Cite de respuesta:";
             // 
-            // chkFechaRespuesta
+            // chkRespuesta
             // 
-            this.chkFechaRespuesta.AutoSize = true;
-            this.chkFechaRespuesta.Location = new System.Drawing.Point(852, 104);
-            this.chkFechaRespuesta.Name = "chkFechaRespuesta";
-            this.chkFechaRespuesta.Size = new System.Drawing.Size(15, 14);
-            this.chkFechaRespuesta.TabIndex = 19;
-            this.chkFechaRespuesta.UseVisualStyleBackColor = true;
+            this.chkRespuesta.AutoSize = true;
+            this.chkRespuesta.Location = new System.Drawing.Point(852, 104);
+            this.chkRespuesta.Name = "chkRespuesta";
+            this.chkRespuesta.Size = new System.Drawing.Size(15, 14);
+            this.chkRespuesta.TabIndex = 19;
+            this.chkRespuesta.UseVisualStyleBackColor = true;
             // 
             // chkRecepcionDestinatario
             // 
@@ -470,7 +474,7 @@
             // dtpFechaRecepcion
             // 
             this.dtpFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaRecepcion.Location = new System.Drawing.Point(383, 19);
+            this.dtpFechaRecepcion.Location = new System.Drawing.Point(377, 19);
             this.dtpFechaRecepcion.Name = "dtpFechaRecepcion";
             this.dtpFechaRecepcion.Size = new System.Drawing.Size(90, 22);
             this.dtpFechaRecepcion.TabIndex = 3;
@@ -478,7 +482,7 @@
             // lblFechaRecepcion
             // 
             this.lblFechaRecepcion.AutoSize = true;
-            this.lblFechaRecepcion.Location = new System.Drawing.Point(245, 24);
+            this.lblFechaRecepcion.Location = new System.Drawing.Point(239, 24);
             this.lblFechaRecepcion.Name = "lblFechaRecepcion";
             this.lblFechaRecepcion.Size = new System.Drawing.Size(131, 16);
             this.lblFechaRecepcion.TabIndex = 2;
@@ -503,23 +507,52 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(510, 528);
+            this.btnExcel.Location = new System.Drawing.Point(650, 529);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(103, 41);
-            this.btnExcel.TabIndex = 4;
+            this.btnExcel.TabIndex = 5;
             this.btnExcel.Text = "Importar desde &Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(653, 528);
+            this.btnImprimir.Location = new System.Drawing.Point(793, 529);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(103, 40);
-            this.btnImprimir.TabIndex = 5;
+            this.btnImprimir.TabIndex = 6;
             this.btnImprimir.Text = "&Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(244, 528);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(103, 41);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "E&liminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnTodos
+            // 
+            this.btnTodos.Location = new System.Drawing.Point(510, 529);
+            this.btnTodos.Name = "btnTodos";
+            this.btnTodos.Size = new System.Drawing.Size(103, 41);
+            this.btnTodos.TabIndex = 4;
+            this.btnTodos.Text = "&Mostrar todos";
+            this.btnTodos.UseVisualStyleBackColor = true;
+            this.btnTodos.Click += new System.EventHandler(this.btnTodos_Click);
+            // 
+            // chkRecepcion
+            // 
+            this.chkRecepcion.AutoSize = true;
+            this.chkRecepcion.Location = new System.Drawing.Point(473, 22);
+            this.chkRecepcion.Name = "chkRecepcion";
+            this.chkRecepcion.Size = new System.Drawing.Size(15, 14);
+            this.chkRecepcion.TabIndex = 25;
+            this.chkRecepcion.UseVisualStyleBackColor = true;
             // 
             // FrmPrincipal
             // 
@@ -527,6 +560,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 581);
+            this.Controls.Add(this.btnTodos);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.groupBox2);
@@ -576,7 +611,7 @@
         private System.Windows.Forms.Label lblConcluido;
         private System.Windows.Forms.TextBox txtNroCiteRespuesta;
         private System.Windows.Forms.Label lblNroCiteRespuesta;
-        private System.Windows.Forms.CheckBox chkFechaRespuesta;
+        private System.Windows.Forms.CheckBox chkRespuesta;
         private System.Windows.Forms.CheckBox chkRecepcionDestinatario;
         private System.Windows.Forms.DateTimePicker dtpFechaRespuesta;
         private System.Windows.Forms.Label lblFechaRespuesta;
@@ -598,6 +633,9 @@
         private System.Windows.Forms.Label lblNroRecepcion;
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnTodos;
+        private System.Windows.Forms.CheckBox chkRecepcion;
     }
 }
 
